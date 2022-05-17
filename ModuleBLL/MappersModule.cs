@@ -10,6 +10,7 @@ namespace ModuleBLL
         {
             builder.Register(context => new MapperConfiguration(cfg =>
             {
+                cfg.AddProfile<UserMapper>();
                 cfg.AddProfile<ResumeMapper>();
                 cfg.AddProfile<VacancyMapper>();
             }

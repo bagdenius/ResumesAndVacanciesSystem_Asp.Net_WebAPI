@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain;
 using Entities;
+using Models;
 
 namespace Mappers
 {
@@ -9,6 +10,7 @@ namespace Mappers
         public VacancyMapper()
         {
             CreateMap<Vacancy, VacancyEntity>().ReverseMap();
+            CreateMap<Vacancy, VacancyModel>().ReverseMap();
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Repositories.Abstract;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Repositories
 {
@@ -16,6 +17,9 @@ namespace Repositories
 
         public void Add(TEntity entity) =>
             _dbSet.Add(entity);
+
+        //public async void AddAsync(TEntity entity, CancellationToken cancellationToken) =>
+        //    await _dbSet.AddAsync(entity, cancellationToken);
 
         public void Update(TEntity entity) =>
             _context.Entry(entity).State = EntityState.Modified;

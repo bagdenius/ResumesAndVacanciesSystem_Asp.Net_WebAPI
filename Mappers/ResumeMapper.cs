@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain;
 using Entities;
+using Models;
 
 namespace Mappers
 {
@@ -9,6 +10,7 @@ namespace Mappers
         public ResumeMapper()
         {
             CreateMap<Resume, ResumeEntity>().ReverseMap();
+            CreateMap<Resume, ResumeModel>().ReverseMap();
         }
     }
 }
