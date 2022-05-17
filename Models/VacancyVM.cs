@@ -1,10 +1,10 @@
-﻿namespace Models
+﻿namespace ViewModels
 {
-    public class VacancyModel
+    public class VacancyVM
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public UserModel User { get; set; }
+        public UserVM User { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }

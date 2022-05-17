@@ -20,10 +20,10 @@ namespace Services
         public void Update(Vacancy vacancy) =>
             _unitOfWork.Vacancies.Update(_mapper.Map<VacancyEntity>(vacancy));
 
-        public void Remove(int id) =>
+        public void Remove(Guid id) =>
             _unitOfWork.Vacancies.Remove(id);
 
-        public Vacancy Get(int id) =>
+        public Vacancy Get(Guid id) =>
             _mapper.Map<Vacancy>(_unitOfWork.Vacancies.Get(id));
 
         public List<Vacancy> GetAll() =>

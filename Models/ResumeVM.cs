@@ -1,10 +1,10 @@
-﻿namespace Models
+﻿namespace ViewModels
 {
-    public class ResumeModel
+    public class ResumeVM
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public UserModel User { get; set; }
+        public UserVM User { get; set; }
 
         public string Title { get; set; }
         public string City { get; set; }

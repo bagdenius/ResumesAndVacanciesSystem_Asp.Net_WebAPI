@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ResumeCommands\CreateResume\" />
+    <Folder Include="ResumeCommands\RemoveResume\" />
+    <Folder Include="ResumeCommands\UpdateResume\" />
+    <Folder Include="VacancyCommands\CreateVacancy\" />
+    <Folder Include="VacancyCommands\RemoveVacancy\" />
+    <Folder Include="VacancyCommands\UpdateVacancy\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Models\ViewModels.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+
+</Project>

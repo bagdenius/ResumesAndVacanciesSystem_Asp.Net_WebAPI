@@ -20,10 +20,10 @@ namespace Services
         public void Update(User user) =>
             _unitOfWork.Users.Update(_mapper.Map<UserEntity>(user));
 
-        public void Remove(int id) =>
+        public void Remove(Guid id) =>
             _unitOfWork.Users.Remove(id);
 
-        public User Get(int id) =>
+        public User Get(Guid id) =>
             _mapper.Map<User>(_unitOfWork.Users.Get(id));
 
         public List<User> GetAll() =>

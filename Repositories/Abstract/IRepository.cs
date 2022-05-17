@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Repositories.Abstract
@@ -8,8 +9,8 @@ namespace Repositories.Abstract
         void Add(TEntity entity);
         //void AddAsync(TEntity entity, CancellationToken cancellationToken);
         void Update(TEntity entity);
-        void Remove(int id);
-        TEntity Get(int id);
+        void Remove(Guid id);
+        TEntity Get(Guid id);
         List<TEntity> GetAll();
     }
 }

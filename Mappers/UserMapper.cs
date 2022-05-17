@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Domain;
 using Entities;
-using Models;
+using ViewModels;
 
 namespace Mappers
 {
@@ -10,7 +10,7 @@ namespace Mappers
         public UserMapper()
         {
             CreateMap<User, UserEntity>().ReverseMap();
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<User, UserVM>().ReverseMap();
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Autofac;
-using Controllers;
-using Controllers.Abstract;
-using Models;
+using ViewModels;
 using ModuleBLL;
 
 namespace ModulesAPI
@@ -10,9 +8,6 @@ namespace ModulesAPI
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<UserController>().As<IController<UserModel>>().SingleInstance();
-            builder.RegisterType<ResumeController>().As<IController<ResumeModel>>().SingleInstance();
-            builder.RegisterType<VacancyController>().As<IController<VacancyModel>>().SingleInstance();
             // level below registration
             builder.RegisterModule<MappersModule>();
             builder.RegisterModule<ServicesModule>();

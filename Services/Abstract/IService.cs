@@ -4,8 +4,8 @@
     {
         void Add(TDomain domain);
         void Update(TDomain domain);
-        void Remove(int id);
-        TDomain Get(int id);
+        void Remove(Guid id);
+        TDomain Get(Guid id);
         List<TDomain> GetAll();
         void Save();
     }

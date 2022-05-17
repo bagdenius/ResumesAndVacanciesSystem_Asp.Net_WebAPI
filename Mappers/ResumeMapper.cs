@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Domain;
 using Entities;
-using Models;
+using ViewModels;
 
 namespace Mappers
 {
@@ -10,7 +10,7 @@ namespace Mappers
         public ResumeMapper()
         {
             CreateMap<Resume, ResumeEntity>().ReverseMap();
-            CreateMap<Resume, ResumeModel>().ReverseMap();
+            CreateMap<Resume, ResumeVM>().ReverseMap();
         }
     }
 }

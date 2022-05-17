@@ -20,10 +20,10 @@ namespace Services
         public void Update(Resume resume) =>
             _unitOfWork.Resumes.Update(_mapper.Map<ResumeEntity>(resume));
 
-        public void Remove(int id) =>
+        public void Remove(Guid id) =>
             _unitOfWork.Resumes.Remove(id);
 
-        public Resume Get(int id) =>
+        public Resume Get(Guid id) =>
             _mapper.Map<Resume>(_unitOfWork.Resumes.Get(id));
 
         public List<Resume> GetAll() =>

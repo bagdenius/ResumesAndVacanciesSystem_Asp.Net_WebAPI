@@ -1,6 +1,7 @@
 ﻿using Database;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,10 +25,10 @@ namespace Repositories
         public void Update(TEntity entity) =>
             _context.Entry(entity).State = EntityState.Modified;
 
-        public void Remove(int id) =>
+        public void Remove(Guid id) =>
             _dbSet.Remove(_dbSet.Find(id));
 
-        public TEntity Get(int id) => 
+        public TEntity Get(Guid id) => 
             _dbSet.Find(id);
 
         public List<TEntity> GetAll() => 
