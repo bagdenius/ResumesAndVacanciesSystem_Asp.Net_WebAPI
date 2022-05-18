@@ -2,6 +2,8 @@
 using Entities;
 using Repositories.Abstract;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UnitOfWOrk.Abstract;
 
 namespace UnitOfWOrk
@@ -17,8 +19,9 @@ namespace UnitOfWOrk
             IRepository<ResumeEntity> resumes, IRepository<VacancyEntity> vacancies) =>
             (_context, Users, Resumes, Vacancies) = (context, users, resumes, vacancies);
 
-        // Methods (add async tasks maybe)
         public void Save() => _context.SaveChanges();
+        public async Task SaveAsync(CancellationToken cancellationToken) =>
+            await _context.SaveChangesAsync(cancellationToken);
 
         #region Disposing
 

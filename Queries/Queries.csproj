@@ -15,11 +15,4 @@
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ResumeQueries\GetResume\" />
-    <Folder Include="ResumeQueries\GetResumeList\" />
-    <Folder Include="VacancyQueries\GetVacancy\" />
-    <Folder Include="VacancyQueries\GetVacancyList\" />
-  </ItemGroup>
-
 </Project>

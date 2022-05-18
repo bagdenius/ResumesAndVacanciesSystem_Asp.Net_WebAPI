@@ -1,6 +1,8 @@
 ﻿using Entities;
 using Repositories.Abstract;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace UnitOfWOrk.Abstract
 {
@@ -10,5 +12,6 @@ namespace UnitOfWOrk.Abstract
         IRepository<ResumeEntity> Resumes { get; }
         IRepository<VacancyEntity> Vacancies { get; }
         void Save();
+        Task SaveAsync(CancellationToken cancellationToken);
     }
 }

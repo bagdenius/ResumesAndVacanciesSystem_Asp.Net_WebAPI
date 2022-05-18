@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ViewModels;
 
-namespace Queries.UserQueries.GetUser
+namespace Commands.UserQueries.GetUser
 {
     public class GetUserQuery : IRequest<UserVM>
     {

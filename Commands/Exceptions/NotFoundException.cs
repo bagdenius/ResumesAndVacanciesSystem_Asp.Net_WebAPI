@@ -1,4 +1,4 @@
-﻿namespace Queries.Exceptions
+﻿namespace Commands.Exceptions
 {
     public class NotFoundException : Exception
     {

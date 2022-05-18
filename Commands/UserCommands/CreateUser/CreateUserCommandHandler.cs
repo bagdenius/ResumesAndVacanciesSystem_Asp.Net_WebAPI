@@ -4,7 +4,7 @@ using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Queries.UserCommands.CreateUser
+namespace Commands.UserCommands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
@@ -30,8 +30,8 @@ namespace Queries.UserCommands.CreateUser
                 Email = request.Email,
                 CreationDate = DateTime.Now
             };
-            _service.Add(_mapper.Map<User>(user));
-            _service.Save();
+            await _service.AddAsync(_mapper.Map<User>(user), cancellationToken);
+            await _service.SaveAsync(cancellationToken);
             return user.Id;
         }
     }

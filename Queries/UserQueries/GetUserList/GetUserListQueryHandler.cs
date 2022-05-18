@@ -4,7 +4,7 @@ using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Queries.UserQueries.GetUserList
+namespace Commands.UserQueries.GetUserList
 {
     public class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, List<UserVM>>
     {
@@ -15,8 +15,8 @@ namespace Queries.UserQueries.GetUserList
 
         public async Task<List<UserVM>> Handle(GetUserListQuery request, CancellationToken cancellationToken)
         {
-            var users = _mapper.Map<List<UserVM>>(_service.GetAll());
-            return users;
+            var users = await _service.GetAllAsync(cancellationToken);
+            return _mapper.Map<List<UserVM>>(users);
         }
     }
 }

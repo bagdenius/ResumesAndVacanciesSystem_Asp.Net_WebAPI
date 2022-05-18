@@ -1,11 +1,11 @@
-﻿using Queries.Exceptions;
+﻿using Commands.Exceptions;
 using MediatR;
 using ViewModels;
 using Services.Abstract;
 using Domain;
 using AutoMapper;
 
-namespace Queries.UserCommands.UpdateUser
+namespace Commands.UserCommands.UpdateUser
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     {
@@ -16,9 +16,9 @@ namespace Queries.UserCommands.UpdateUser
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = _service.Get(request.Id);
+            var user = _mapper.Map<UserVM>(await _service.GetAsync(request.Id, cancellationToken));
             if (user == null || user.Id != request.Id)
-                throw new NotFoundException(nameof(UserVM), request.Id);
+                throw new NotFoundException(nameof(User), request.Id);
             user.Id = request.Id;
             user.Name = request.Name;
             user.Surname = request.Surname;
@@ -30,8 +30,7 @@ namespace Queries.UserCommands.UpdateUser
             user.City = request.City;
             user.Phone = request.Phone;
             user.Email = request.Email;
-            //_controller.Update(user);
-            _service.Save();
+            await _service.SaveAsync(cancellationToken);
             return Unit.Value;
         }
     }

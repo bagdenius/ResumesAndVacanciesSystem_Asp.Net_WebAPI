@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Repositories
 {
@@ -19,8 +20,8 @@ namespace Repositories
         public void Add(TEntity entity) =>
             _dbSet.Add(entity);
 
-        //public async void AddAsync(TEntity entity, CancellationToken cancellationToken) =>
-        //    await _dbSet.AddAsync(entity, cancellationToken);
+        public async Task AddAsync(TEntity entity, CancellationToken cancellationToken) =>
+            await _dbSet.AddAsync(entity, cancellationToken);
 
         public void Update(TEntity entity) =>
             _context.Entry(entity).State = EntityState.Modified;
@@ -28,10 +29,19 @@ namespace Repositories
         public void Remove(Guid id) =>
             _dbSet.Remove(_dbSet.Find(id));
 
+        public void Remove(TEntity entity) =>
+            _dbSet.Remove(entity);
+
         public TEntity Get(Guid id) => 
             _dbSet.Find(id);
 
+        public async Task<TEntity> GetAsync(Guid id, CancellationToken cancellationToken) =>
+            await _dbSet.FindAsync(id, cancellationToken);
+
         public List<TEntity> GetAll() => 
-            _dbSet.ToList();
+            _dbSet.AsNoTracking().ToList();
+
+        public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken) =>
+            await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
     }
 }

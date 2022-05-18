@@ -5,7 +5,7 @@ using Queries.Exceptions;
 using Services.Abstract;
 using ViewModels;
 
-namespace Queries.UserQueries.GetUser
+namespace Commands.UserQueries.GetUser
 {
     public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserVM>
     {
@@ -16,10 +16,10 @@ namespace Queries.UserQueries.GetUser
 
         public async Task<UserVM> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
-            var user = _mapper.Map<UserVM>(_service.Get(request.Id));
+            var user = await _service.GetAsync(request.Id, cancellationToken);
             if (user == null || user.Id != request.Id)
-                throw new NotFoundException(nameof(UserVM), request.Id);
-            return user;
+                throw new NotFoundException(nameof(User), request.Id);
+            return _mapper.Map<UserVM>(user);
         }
     }
 }

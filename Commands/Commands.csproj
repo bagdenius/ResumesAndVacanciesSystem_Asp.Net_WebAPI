@@ -7,15 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ResumeCommands\CreateResume\" />
-    <Folder Include="ResumeCommands\RemoveResume\" />
-    <Folder Include="ResumeCommands\UpdateResume\" />
-    <Folder Include="VacancyCommands\CreateVacancy\" />
-    <Folder Include="VacancyCommands\RemoveVacancy\" />
-    <Folder Include="VacancyCommands\UpdateVacancy\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 

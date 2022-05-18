@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using Queries.Exceptions;
+using Commands.Exceptions;
 using Domain;
 using MediatR;
 using Services.Abstract;
-using ViewModels;
 
-namespace Queries.UserCommands.RemoveUser
+namespace Commands.UserCommands.RemoveUser
 {
     public class RemoveUserCommandHandler : IRequestHandler<RemoveUserCommand>
     {
@@ -16,11 +15,11 @@ namespace Queries.UserCommands.RemoveUser
 
         public async Task<Unit> Handle(RemoveUserCommand request, CancellationToken cancellationToken)
         {
-            var user = _mapper.Map<UserVM>(_service.Get(request.Id));
+            var user = await _service.GetAsync(request.Id, cancellationToken);
             if (user == null || user.Id != request.Id)
-                throw new NotFoundException(nameof(UserVM), request.Id);
-            _service.Remove(user.Id);
-            _service.Save();
+                throw new NotFoundException(nameof(User), request.Id);
+            _service.Remove(user);
+            await _service.SaveAsync(cancellationToken);
             return Unit.Value;
         }
     }

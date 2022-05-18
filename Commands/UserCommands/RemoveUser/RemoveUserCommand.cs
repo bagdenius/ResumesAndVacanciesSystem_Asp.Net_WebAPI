@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Queries.UserCommands.RemoveUser
+namespace Commands.UserCommands.RemoveUser
 {
     public class RemoveUserCommand : IRequest
     {
