@@ -2,7 +2,7 @@
 {
     public class DbInitializer
     {
-        public static void Initialize(DatabaseContext context)
+        public static void initialize(DatabaseContext context)
         {
             //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();

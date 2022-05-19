@@ -2,7 +2,7 @@
 using AutoMapper;
 using Mappers;
 
-namespace ModuleBLL
+namespace ModulesBLL
 {
     public class MappersModule : Module
     {

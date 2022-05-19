@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Commands.Exceptions;
+using Queries.Exceptions;
 using Domain;
 using MediatR;
 using Services.Abstract;
 
-namespace Commands.VacancyCommands.RemoveVacancy
+namespace Queries.VacancyCommands.RemoveVacancy
 {
     public class RemoveVacancyCommandHandler : IRequestHandler<RemoveVacancyCommand>
     {
@@ -18,7 +18,7 @@ namespace Commands.VacancyCommands.RemoveVacancy
             var vacancy = await _service.GetAsync(request.Id, cancellationToken);
             if (vacancy == null || vacancy.Id != request.Id)
                 throw new NotFoundException(nameof(Vacancy), request.Id);
-            _service.Remove(vacancy);
+            _service.Remove(vacancy.Id);
             await _service.SaveAsync(cancellationToken);
             return Unit.Value;
         }

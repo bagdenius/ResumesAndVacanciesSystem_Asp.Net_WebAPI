@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Commands\Commands.csproj" />
     <ProjectReference Include="..\ModuleBLL\ModulesBLL.csproj" />
+    <ProjectReference Include="..\Queries\Queries.csproj" />
   </ItemGroup>
 
 </Project>

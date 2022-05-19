@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Commands.Exceptions;
+using Queries.Exceptions;
 using Domain;
 using MediatR;
 using Services.Abstract;
 
-namespace Commands.ResumeCommands.RemoveResume
+namespace Queries.ResumeCommands.RemoveResume
 {
     public class RemoveResumeCommandHandler : IRequestHandler<RemoveResumeCommand>
     {
@@ -18,7 +18,7 @@ namespace Commands.ResumeCommands.RemoveResume
             var resume = await _service.GetAsync(request.Id, cancellationToken);
             if (resume == null || resume.Id != request.Id)
                 throw new NotFoundException(nameof(Resume), request.Id);
-            _service.Remove(resume);
+            _service.Remove(resume.Id);
             await _service.SaveAsync(cancellationToken);
             return Unit.Value;
         }

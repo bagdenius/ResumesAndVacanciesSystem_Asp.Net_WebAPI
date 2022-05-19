@@ -4,7 +4,7 @@ using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Commands.VacancyCommands.CreateVacancy
+namespace Queries.VacancyCommands.CreateVacancy
 {
     public class CreateVacancyCommandHandler : IRequestHandler<CreateVacancyCommand, Guid>
     {

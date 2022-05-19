@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Commands.ResumeCommands.UpdateResume
+namespace Queries.ResumeCommands.UpdateResume
 {
     public class UpdateResumeCommand : IRequest
     {

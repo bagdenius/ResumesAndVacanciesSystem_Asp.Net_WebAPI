@@ -4,7 +4,7 @@ using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Commands.ResumeCommands.CreateResume
+namespace Queries.ResumeCommands.CreateResume
 {
     public class CreateResumeCommandHandler : IRequestHandler<CreateResumeCommand, Guid>
     {

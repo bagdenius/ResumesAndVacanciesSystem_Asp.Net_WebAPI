@@ -1,4 +1,5 @@
 ﻿using Database;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Abstract;
 using System;
@@ -32,13 +33,13 @@ namespace Repositories
         public void Remove(TEntity entity) =>
             _dbSet.Remove(entity);
 
-        public TEntity Get(Guid id) => 
+        public TEntity Get(Guid id) =>
             _dbSet.Find(id);
 
         public async Task<TEntity> GetAsync(Guid id, CancellationToken cancellationToken) =>
-            await _dbSet.FindAsync(id, cancellationToken);
+            await _dbSet.FindAsync(new object[] { id }, cancellationToken);
 
-        public List<TEntity> GetAll() => 
+        public List<TEntity> GetAll() =>
             _dbSet.AsNoTracking().ToList();
 
         public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken) =>

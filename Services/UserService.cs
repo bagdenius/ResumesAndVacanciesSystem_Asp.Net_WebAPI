@@ -32,18 +32,18 @@ namespace Services
         public User Get(Guid id) =>
             _mapper.Map<User>(_unitOfWork.Users.Get(id));
 
-        public Task<User> GetAsync(Guid id, CancellationToken cancellationToken) =>
-            _mapper.Map<Task<User>>(_unitOfWork.Users.GetAsync(id, cancellationToken));
+        public async Task<User> GetAsync(Guid id, CancellationToken cancellationToken) =>
+            _mapper.Map<User>(await _unitOfWork.Users.GetAsync(id, cancellationToken));
 
         public List<User> GetAll() =>
             _mapper.Map<List<User>>(_unitOfWork.Users.GetAll());
 
-        public Task<List<User>> GetAllAsync(CancellationToken cancellationToken) =>
-            _mapper.Map<Task<List<User>>>(_unitOfWork.Users.GetAllAsync(cancellationToken));
+        public async Task<List<User>> GetAllAsync(CancellationToken cancellationToken) =>
+            _mapper.Map<List<User>>(await _unitOfWork.Users.GetAllAsync(cancellationToken));
 
         public void Save() => _unitOfWork.Save();
 
-        public Task SaveAsync(CancellationToken cancellationToken) =>
-            _unitOfWork.SaveAsync(cancellationToken);
+        public async Task SaveAsync(CancellationToken cancellationToken) =>
+            await _unitOfWork.SaveAsync(cancellationToken);
     }
 }

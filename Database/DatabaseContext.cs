@@ -1,13 +1,17 @@
-﻿using Database.EntityTypeConfigurations;
+﻿using Database.Abstract;
+using Database.EntityTypeConfigurations;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database
 {
-    public class DatabaseContext : DbContext
+    public class DatabaseContext : DbContext, IDatabaseContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
-            : base(options) { }
+        public DatabaseContext()
+        { 
+            //Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<ResumeEntity> Resumes { get; set; }
@@ -21,7 +25,7 @@ namespace Database
             base.OnModelCreating(builder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ResumesAndVacancies");
     }
 }

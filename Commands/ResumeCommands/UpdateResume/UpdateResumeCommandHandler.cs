@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Commands.Exceptions;
+using Queries.Exceptions;
 using Domain;
 using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Commands.ResumeCommands.UpdateResume
+namespace Queries.ResumeCommands.UpdateResume
 {
     public class UpdateResumeCommandHandler : IRequestHandler<UpdateResumeCommand>
     {

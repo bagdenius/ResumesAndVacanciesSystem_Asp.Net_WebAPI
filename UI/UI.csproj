@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Commands\Commands.csproj" />
-    <ProjectReference Include="..\Controllers\Controllers.csproj" />
     <ProjectReference Include="..\Models\ViewModels.csproj" />
     <ProjectReference Include="..\ModulesAPI\ModulesAPI.csproj" />
     <ProjectReference Include="..\Queries\Queries.csproj" />

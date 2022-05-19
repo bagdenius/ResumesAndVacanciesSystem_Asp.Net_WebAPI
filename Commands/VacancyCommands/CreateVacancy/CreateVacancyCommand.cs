@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Commands.VacancyCommands.CreateVacancy
+namespace Queries.VacancyCommands.CreateVacancy
 {
     public class CreateVacancyCommand : IRequest<Guid>
     {

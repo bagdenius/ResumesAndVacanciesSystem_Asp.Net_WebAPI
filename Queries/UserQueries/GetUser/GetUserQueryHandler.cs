@@ -5,7 +5,7 @@ using Queries.Exceptions;
 using Services.Abstract;
 using ViewModels;
 
-namespace Commands.UserQueries.GetUser
+namespace Queries.UserQueries.GetUser
 {
     public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserVM>
     {

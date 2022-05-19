@@ -9,8 +9,9 @@ namespace ModulesDAL
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Repository<ResumeEntity>>().As<IRepository<ResumeEntity>>().SingleInstance();
-            builder.RegisterType<Repository<VacancyEntity>>().As<IRepository<VacancyEntity>>().SingleInstance();
+            builder.RegisterType<Repository<UserEntity>>().As<IRepository<UserEntity>>()/*.SingleInstance()*/;
+            builder.RegisterType<Repository<ResumeEntity>>().As<IRepository<ResumeEntity>>()/*.SingleInstance()*/;
+            builder.RegisterType<Repository<VacancyEntity>>().As<IRepository<VacancyEntity>>()/*.SingleInstance()*/;
         }
     }
 }

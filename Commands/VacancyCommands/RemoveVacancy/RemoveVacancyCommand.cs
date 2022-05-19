@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Commands.VacancyCommands.RemoveVacancy
+namespace Queries.VacancyCommands.RemoveVacancy
 {
     public class RemoveVacancyCommand : IRequest
     {

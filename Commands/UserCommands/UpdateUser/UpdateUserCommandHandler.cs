@@ -1,11 +1,11 @@
-﻿using Commands.Exceptions;
+﻿using Queries.Exceptions;
 using MediatR;
 using ViewModels;
 using Services.Abstract;
 using Domain;
 using AutoMapper;
 
-namespace Commands.UserCommands.UpdateUser
+namespace Queries.UserCommands.UpdateUser
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     {

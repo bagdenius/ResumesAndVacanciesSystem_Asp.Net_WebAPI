@@ -4,7 +4,7 @@ using MediatR;
 using Services.Abstract;
 using ViewModels;
 
-namespace Commands.UserCommands.CreateUser
+namespace Queries.UserCommands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {

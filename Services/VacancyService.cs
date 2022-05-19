@@ -32,18 +32,18 @@ namespace Services
         public Vacancy Get(Guid id) =>
             _mapper.Map<Vacancy>(_unitOfWork.Vacancies.Get(id));
 
-        public Task<Vacancy> GetAsync(Guid id, CancellationToken cancellationToken) =>
-            _mapper.Map<Task<Vacancy>>(_unitOfWork.Vacancies.GetAsync(id, cancellationToken));
+        public async Task<Vacancy> GetAsync(Guid id, CancellationToken cancellationToken) =>
+            _mapper.Map<Vacancy>(await _unitOfWork.Vacancies.GetAsync(id, cancellationToken));
 
         public List<Vacancy> GetAll() =>
             _mapper.Map<List<Vacancy>>(_unitOfWork.Vacancies.GetAll());
 
-        public Task<List<Vacancy>> GetAllAsync(CancellationToken cancellationToken) =>
-            _mapper.Map<Task<List<Vacancy>>>(_unitOfWork.Vacancies.GetAllAsync(cancellationToken));
+        public async Task<List<Vacancy>> GetAllAsync(CancellationToken cancellationToken) =>
+            _mapper.Map<List<Vacancy>>(await _unitOfWork.Vacancies.GetAllAsync(cancellationToken));
 
         public void Save() => _unitOfWork.Save();
 
-        public Task SaveAsync(CancellationToken cancellationToken) =>
-            _unitOfWork.SaveAsync(cancellationToken);
+        public async Task SaveAsync(CancellationToken cancellationToken) =>
+            await _unitOfWork.SaveAsync(cancellationToken);
     }
 }

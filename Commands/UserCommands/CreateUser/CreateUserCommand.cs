@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Commands.UserCommands.CreateUser
+namespace Queries.UserCommands.CreateUser
 {
     public class CreateUserCommand : IRequest<Guid>
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Commands.ResumeCommands.CreateResume
+namespace Queries.ResumeCommands.CreateResume
 {
     public class CreateResumeCommand : IRequest<Guid>
     {
