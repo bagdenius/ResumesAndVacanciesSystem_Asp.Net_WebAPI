@@ -1,10 +1,12 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using CommandsAndQueries.ResumeCommands.AddResume;
+using CommandsAndQueries.ResumeCommands.RemoveResume;
+using CommandsAndQueries.ResumeCommands.UpdateResume;
+using CommandsAndQueries.ResumeQueries.GetResume;
+using CommandsAndQueries.ResumeQueries.GetResumeList;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Queries.ResumeCommands.CreateResume;
-using Queries.ResumeCommands.RemoveResume;
-using Queries.ResumeCommands.UpdateResume;
-using Queries.ResumeQueries.GetResume;
-using Queries.ResumeQueries.GetResumeList;
+using UI.Models.Resume;
 using ViewModels;
 
 namespace UI.Controllers
@@ -14,8 +16,9 @@ namespace UI.Controllers
     public class ResumeController : BaseController
     {
         private readonly IMediator _mediator;
-        public ResumeController(IMediator mediator) =>
-            _mediator = mediator;
+        private readonly IMapper _mapper;
+        public ResumeController(IMediator mediator, IMapper mapper) =>
+            (_mediator, _mapper) = (mediator, mapper);
 
         [HttpGet]
         public async Task<ActionResult<List<ResumeVM>>> GetAll()
@@ -34,38 +37,17 @@ namespace UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create(ResumeVM resume)
+        public async Task<ActionResult<Guid>> Create(AddResumeModel addResumeModel)
         {
-            var command = new CreateResumeCommand
-            {
-                UserId = resume.Id,
-                Title = resume.Title,
-                City = resume.City,
-                Position = resume.Position,
-                Salary = resume.Salary,
-                Employement = resume.Employement,
-                Experience = resume.Experience,
-                Content = resume.Content
-            };
+            var command = _mapper.Map<AddResumeCommand>(addResumeModel);
             var resumeId = await _mediator.Send(command);
             return Ok(resumeId);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(ResumeVM resume)
+        public async Task<IActionResult> Update(UpdateResumeModel updateResumeModel)
         {
-            var command = new UpdateResumeCommand
-            {
-                Id = resume.Id,
-                UserId = resume.UserId,
-                Title = resume.Title,
-                City = resume.City,
-                Position = resume.Position,
-                Salary = resume.Salary,
-                Employement = resume.Employement,
-                Experience = resume.Experience,
-                Content = resume.Content
-            };
+            var command = _mapper.Map<UpdateResumeCommand>(updateResumeModel);
             await _mediator.Send(command);
             return NoContent();
         }

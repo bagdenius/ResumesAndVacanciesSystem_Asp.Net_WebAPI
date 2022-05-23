@@ -11,15 +11,13 @@ namespace UnitOfWOrk
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
-        public IRepository<UserEntity> Users { get; }
-        public IRepository<ResumeEntity> Resumes { get; }
-        public IRepository<VacancyEntity> Vacancies { get; }
+        public IRepository<User> Users { get; }
+        public IRepository<Resume> Resumes { get; }
+        public IRepository<Vacancy> Vacancies { get; }
 
-        public UnitOfWork(DatabaseContext context, IRepository<UserEntity> users,
-            IRepository<ResumeEntity> resumes, IRepository<VacancyEntity> vacancies) =>
+        public UnitOfWork(DatabaseContext context, IRepository<User> users,
+            IRepository<Resume> resumes, IRepository<Vacancy> vacancies) =>
             (_context, Users, Resumes, Vacancies) = (context, users, resumes, vacancies);
-
-        public void Save() => _context.SaveChanges();
         public async Task SaveAsync(CancellationToken cancellationToken) =>
             await _context.SaveChangesAsync(cancellationToken);
 

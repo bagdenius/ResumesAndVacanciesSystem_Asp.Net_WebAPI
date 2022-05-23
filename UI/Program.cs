@@ -1,16 +1,29 @@
 using Autofac;
+using FluentValidation.AspNetCore;
 using Autofac.Extensions.DependencyInjection;
 using MediatR.Extensions.Autofac.DependencyInjection;
+using CommandsAndQueries;
+using UI;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Services.AddFluentValidation(fv =>
+    fv.RegisterValidatorsFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddSwaggerGen();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
-    containerBuilder.RegisterAssemblyModules(typeof(ModulesAPI.CommandsModule).Assembly);
-    containerBuilder.RegisterAssemblyModules(typeof(ModulesBLL.ServicesModule).Assembly);
-    containerBuilder.RegisterAssemblyModules(typeof(ModulesDAL.UnitOfWorkModule).Assembly);
+    containerBuilder.RegisterAssemblyModules(typeof(CommandsAndQueriesModule).Assembly);
+    containerBuilder.RegisterAssemblyModules(typeof(ModulesDAL.DatabaseModule).Assembly);
+    containerBuilder.RegisterModule<ModelMappingModule>();
     containerBuilder.RegisterMediatR(typeof(Program).Assembly);
 });
 
@@ -31,6 +44,12 @@ if(app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI(config =>
+{
+    config.RoutePrefix = string.Empty;
+    config.SwaggerEndpoint("swagger/v1/swagger.json", "Resumes&Vacancies API");
+});
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");

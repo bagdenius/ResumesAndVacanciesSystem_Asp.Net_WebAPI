@@ -1,10 +1,12 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using CommandsAndQueries.VacancyCommands.AddVacancy;
+using CommandsAndQueries.VacancyCommands.RemoveVacancy;
+using CommandsAndQueries.VacancyCommands.UpdateVacancy;
+using CommandsAndQueries.VacancyQueries.GetVacancy;
+using CommandsAndQueries.VacancyQueries.GetVacancyList;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Queries.VacancyCommands.CreateVacancy;
-using Queries.VacancyCommands.RemoveVacancy;
-using Queries.VacancyCommands.UpdateVacancy;
-using Queries.VacancyQueries.GetVacancy;
-using Queries.VacancyQueries.GetVacancyList;
+using UI.Models.Vacancy;
 using ViewModels;
 
 namespace UI.Controllers
@@ -14,8 +16,9 @@ namespace UI.Controllers
     public class VacancyController : BaseController
     {
         private readonly IMediator _mediator;
-        public VacancyController(IMediator mediator) =>
-            _mediator = mediator;
+        private readonly IMapper _mapper;
+        public VacancyController(IMediator mediator, IMapper mapper) =>
+            (_mediator, _mapper) = (mediator, mapper);
 
         [HttpGet]
         public async Task<ActionResult<List<VacancyVM>>> GetAll()
@@ -34,46 +37,17 @@ namespace UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create(VacancyVM vacancy)
+        public async Task<ActionResult<Guid>> Create(AddVacancyModel addVacancyModel)
         {
-            var command = new CreateVacancyCommand
-            {
-                UserId = vacancy.UserId,
-                Title = vacancy.Title,
-                Description = vacancy.Description,
-                City = vacancy.City,
-                Company = vacancy.Company,
-                Position = vacancy.Position,
-                Salary = vacancy.Salary,
-                Employement = vacancy.Employement,
-                WorkingDays = vacancy.WorkingDays,
-                WorkingHours = vacancy.WorkingHours,
-                Experience = vacancy.Experience,
-                Phone = vacancy.Phone
-            };
+            var command = _mapper.Map<AddVacancyCommand>(addVacancyModel);
             var vacancyId = await _mediator.Send(command);
             return Ok(vacancyId);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(VacancyVM vacancy)
+        public async Task<IActionResult> Update(UpdateVacancyModel updateVacancyModel)
         {
-            var command = new UpdateVacancyCommand
-            {
-                Id = vacancy.Id,
-                UserId = vacancy.UserId,
-                Title = vacancy.Title,
-                Description = vacancy.Description,
-                City = vacancy.City,
-                Company = vacancy.Company,
-                Position = vacancy.Position,
-                Salary = vacancy.Salary,
-                Employement = vacancy.Employement,
-                WorkingDays = vacancy.WorkingDays,
-                WorkingHours = vacancy.WorkingHours,
-                Experience = vacancy.Experience,
-                Phone = vacancy.Phone
-            };
+            var command = _mapper.Map<UpdateVacancyCommand>(updateVacancyModel);
             await _mediator.Send(command);
             return NoContent();
         }

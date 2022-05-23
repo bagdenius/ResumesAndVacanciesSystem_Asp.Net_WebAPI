@@ -8,10 +8,9 @@ namespace UnitOfWOrk.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<UserEntity> Users { get; }
-        IRepository<ResumeEntity> Resumes { get; }
-        IRepository<VacancyEntity> Vacancies { get; }
-        void Save();
+        IRepository<User> Users { get; }
+        IRepository<Resume> Resumes { get; }
+        IRepository<Vacancy> Vacancies { get; }
         Task SaveAsync(CancellationToken cancellationToken);
     }
 }
