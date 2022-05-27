@@ -22,7 +22,7 @@ namespace BLL.Tests.Common
                 .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
             var context = new DatabaseContext(options);
             context.Database.EnsureCreated();
-            context.Users.AddRange(
+            context.UserAccounts.AddRange(
                 new User
                 {
 

@@ -17,9 +17,9 @@ namespace CommandsAndQueries.UserCommands.UpdateUser
             if (user == null || user.Id != request.Id)
                 throw new NotFoundException(nameof(User), request.Id);
             user.Id = request.Id;
-            user.Login = request.Login;
-            user.Password = request.Password;
-            user.Role = request.Role;
+            //user.Login = request.Login;
+            //user.Password = request.Password;
+            //user.Role = request.Role;
             user.Name = request.Name;
             user.Surname = request.Surname;
             user.Patronymic = request.Patronymic;

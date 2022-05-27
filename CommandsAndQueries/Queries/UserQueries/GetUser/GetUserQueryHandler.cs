@@ -18,7 +18,7 @@ namespace CommandsAndQueries.UserQueries.GetUser
         {
             var user = await _unitOfWork.Users.GetAsync(request.Id, cancellationToken);
             if (user == null || user.Id != request.Id)
-                throw new NotFoundException(nameof(User), request.Id);
+                throw new NotFoundException(nameof(Profile), request.Id);
             return _mapper.Map<UserVM>(user);
         }
     }

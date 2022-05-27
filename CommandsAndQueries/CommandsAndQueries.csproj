@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\UserCommands\**" />
+    <EmbeddedResource Remove="Commands\UserCommands\**" />
+    <None Remove="Commands\UserCommands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mappers\UserMapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation" Version="11.0.1" />

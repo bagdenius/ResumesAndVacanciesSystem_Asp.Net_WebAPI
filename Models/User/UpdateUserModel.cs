@@ -1,4 +1,5 @@
-﻿using Entities.Enums;
+﻿using Entities;
+using Entities.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace UI.Models.User
@@ -25,7 +26,6 @@ namespace UI.Models.User
 
 
         [Required(ErrorMessage = "Оберіть варіант")]
-        [EnumDataType(typeof(Role), ErrorMessage = "Роль вказана некоректно")]
         public Role Role { get; set; }
 
 

@@ -15,9 +15,9 @@ namespace CommandsAndQueries.UserCommands.AddUser
             var user = new User
             {
                 Id = Guid.NewGuid(),
-                Login = request.Login,
-                Password = request.Password,
-                Role = request.Role,
+                //Login = request.Login,
+                //Password = request.Password,
+                //Role = request.Role,
                 Name = request.Name,
                 Surname = request.Surname,
                 Patronymic = request.Patronymic,

@@ -1,4 +1,5 @@
-﻿using Entities.Enums;
+﻿using Entities;
+using Entities.Enums;
 using MediatR;
 
 namespace CommandsAndQueries.UserCommands.UpdateUser

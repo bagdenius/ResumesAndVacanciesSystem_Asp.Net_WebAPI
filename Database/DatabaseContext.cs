@@ -1,19 +1,20 @@
 ﻿using Database.EntityTypeConfigurations;
 using Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Database
 {
-    public class DatabaseContext : DbContext
+    public class DatabaseContext : IdentityDbContext<User, Role, Guid>
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+        public DatabaseContext(DbContextOptions options)
             : base(options)
         {
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Resume> Resumes { get; set; }
         public DbSet<Vacancy> Vacancies { get; set; }
 

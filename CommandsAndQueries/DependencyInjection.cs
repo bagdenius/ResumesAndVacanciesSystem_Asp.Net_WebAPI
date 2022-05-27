@@ -1,4 +1,4 @@
-﻿using CommandsAndQueries.UserCommands.AddUser;
+﻿using CommandsAndQueries.ResumeCommands.AddResume;
 using Mappers;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,14 +10,8 @@ namespace Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            //services.AddTransient<IService<AddResumeModel, UpdateResumeModel, ResumeVM>, ResumeService>()
-            //    .AddTransient<IService<AddUserModel, UpdateUserModel, UserVM>, UserService>()
-            //    .AddTransient<IService<AddVacancyModel, UpdateVacancyModel, VacancyVM>, VacancyService>();
-
-            services.AddAutoMapper(typeof(UserMapper).GetTypeInfo().Assembly);
-
-            services.AddMediatR(typeof(AddUserCommandHandler).GetTypeInfo().Assembly);
-
+            services.AddAutoMapper(typeof(ResumeMapper).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(AddResumeCommandHandler).GetTypeInfo().Assembly);
             return services;
         }
     }

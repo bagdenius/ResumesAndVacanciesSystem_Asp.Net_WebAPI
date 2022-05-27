@@ -1,17 +1,18 @@
 ﻿using Entities.Enums;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities
 {
-    public class User
+    public class User : IdentityUser<Guid>
     {
-        public Guid Id { get; set; }
         public List<Resume> Resumes { get; set; }
         public List<Vacancy> Vacancies { get; set; }
 
         // Account
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public Role Role { get; set; }
+        //public string Login { get; set; }
+        //public string Password { get; set; }
+        //public Role Role { get; set; }
 
 
         // Profile
@@ -22,9 +23,7 @@ namespace Entities
         public Gender Gender { get; set; }
         public DateTime BirthDate { get; set; }
         public City City { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        //public DateTime CreationDate { get; set; }
     }
 }
