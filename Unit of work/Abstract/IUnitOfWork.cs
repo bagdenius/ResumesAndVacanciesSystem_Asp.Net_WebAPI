@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UnitOfWOrk.Abstract
+namespace UnitOfWork.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {

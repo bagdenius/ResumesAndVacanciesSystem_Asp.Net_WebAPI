@@ -1,7 +1,7 @@
 ﻿using CommandsAndQueries.Exceptions;
 using Entities;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
 namespace CommandsAndQueries.VacancyCommands.UpdateVacancy
 {
@@ -27,9 +27,10 @@ namespace CommandsAndQueries.VacancyCommands.UpdateVacancy
             vacancy.Employement = request.Employement;
             vacancy.WorkingDays = request.WorkingDays;
             vacancy.WorkingHours = request.WorkingHours;
-            vacancy.Experience = request.Experience;
             vacancy.Phone = request.Phone;
             vacancy.EditDate = DateTime.Now;
+            if (!request.IsSalarySpecified)
+                vacancy.Salary = "Не вказано";
             await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }

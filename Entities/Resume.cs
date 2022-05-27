@@ -1,4 +1,6 @@
-﻿namespace Entities
+﻿using Entities.Enums;
+
+namespace Entities
 {
     public class Resume
     {
@@ -7,11 +9,9 @@
         public User User { get; set; }
 
         public string Title { get; set; }
-        public string City { get; set; }
         public string Position { get; set; }
-        public int Salary { get; set; }
-        public string Employement { get; set; }
-        public int Experience { get; set; }
+        public string Salary { get; set; }
+        public Employement Employement { get; set; }
         public string Content { get; set; }
 
         public DateTime CreationDate { get; set; }

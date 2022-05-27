@@ -1,6 +1,6 @@
 ﻿using CommandsAndQueries.Exceptions;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 using Entities;
 
 namespace CommandsAndQueries.ResumeCommands.UpdateResume
@@ -19,13 +19,13 @@ namespace CommandsAndQueries.ResumeCommands.UpdateResume
             resume.Id = request.Id;
             resume.UserId = request.UserId;
             resume.Title = request.Title;
-            resume.City = request.City;
             resume.Position = request.Position;
             resume.Salary = request.Salary;
             resume.Employement = request.Employement;
-            resume.Experience = request.Experience;
             resume.Content = request.Content;
             resume.EditDate = DateTime.Now;
+            if (!request.IsSalarySpecified)
+                resume.Salary = "Не вказано";
             await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }

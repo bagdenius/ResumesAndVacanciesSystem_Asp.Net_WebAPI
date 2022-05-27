@@ -1,7 +1,7 @@
 ﻿using CommandsAndQueries.Exceptions;
 using Entities;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
 namespace CommandsAndQueries.VacancyCommands.RemoveVacancy
 {

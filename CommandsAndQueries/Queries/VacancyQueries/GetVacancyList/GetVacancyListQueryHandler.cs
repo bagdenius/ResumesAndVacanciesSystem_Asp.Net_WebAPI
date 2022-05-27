@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 using ViewModels;
 
 namespace CommandsAndQueries.VacancyQueries.GetVacancyList

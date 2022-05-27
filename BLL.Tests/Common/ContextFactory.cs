@@ -27,6 +27,16 @@ namespace BLL.Tests.Common
                 {
 
                 });
+            context.Resumes.AddRange(
+                new Resume
+                {
+
+                });
+            context.Vacancies.AddRange(
+                new Vacancy
+                {
+
+                });
             context.SaveChanges();
             return context;
         }

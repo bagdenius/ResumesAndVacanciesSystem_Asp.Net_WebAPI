@@ -1,6 +1,6 @@
 ﻿using Entities;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
 namespace CommandsAndQueries.VacancyCommands.AddVacancy
 {
@@ -25,10 +25,11 @@ namespace CommandsAndQueries.VacancyCommands.AddVacancy
                 Employement = request.Employement,
                 WorkingDays = request.WorkingDays,
                 WorkingHours = request.WorkingHours,
-                Experience = request.Experience,
                 Phone = request.Phone,
                 CreationDate = DateTime.Now
             };
+            if (!request.IsSalarySpecified)
+                vacancy.Salary = "Не вказано";
             await _unitOfWork.Vacancies.AddAsync(vacancy, cancellationToken);
             await _unitOfWork.SaveAsync(cancellationToken);
             return vacancy.Id;

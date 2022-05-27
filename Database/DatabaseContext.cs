@@ -1,5 +1,4 @@
-﻿
-using Database.EntityTypeConfigurations;
+﻿using Database.EntityTypeConfigurations;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 

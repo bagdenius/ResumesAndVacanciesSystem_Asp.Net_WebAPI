@@ -4,9 +4,9 @@ using Repositories.Abstract;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
-namespace UnitOfWOrk
+namespace UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -1,7 +1,7 @@
 ﻿using CommandsAndQueries.Exceptions;
 using Entities;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
 namespace CommandsAndQueries.ResumeCommands.AddResume
 {
@@ -20,14 +20,14 @@ namespace CommandsAndQueries.ResumeCommands.AddResume
                 Id = Guid.NewGuid(),
                 UserId = request.UserId,
                 Title = request.Title,
-                City = request.City,
                 Position = request.Position,
                 Salary = request.Salary,
                 Employement = request.Employement,
-                Experience = request.Experience,
                 Content = request.Content,
                 CreationDate = DateTime.Now
             };
+            if (!request.IsSalarySpecified)
+                resume.Salary = "Не вказано";
             await _unitOfWork.Resumes.AddAsync(resume, cancellationToken);
             await _unitOfWork.SaveAsync(cancellationToken);
             return resume.Id;

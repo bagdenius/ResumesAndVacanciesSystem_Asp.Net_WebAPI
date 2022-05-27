@@ -2,7 +2,7 @@
 using MediatR;
 using CommandsAndQueries.Exceptions;
 using ViewModels;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 using Entities;
 
 namespace CommandsAndQueries.VacancyQueries.GetVacancy

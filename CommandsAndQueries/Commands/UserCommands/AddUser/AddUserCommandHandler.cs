@@ -1,6 +1,6 @@
 ﻿using Entities;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 
 namespace CommandsAndQueries.UserCommands.AddUser
 {
@@ -15,13 +15,15 @@ namespace CommandsAndQueries.UserCommands.AddUser
             var user = new User
             {
                 Id = Guid.NewGuid(),
+                Login = request.Login,
+                Password = request.Password,
+                Role = request.Role,
                 Name = request.Name,
                 Surname = request.Surname,
                 Patronymic = request.Patronymic,
                 Education = request.Education,
                 Gender = request.Gender,
                 BirthDate = request.BirthDate,
-                Role = request.Role,
                 City = request.City,
                 Phone = request.Phone,
                 Email = request.Email,

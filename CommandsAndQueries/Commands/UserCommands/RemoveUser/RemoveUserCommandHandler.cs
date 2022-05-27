@@ -1,6 +1,6 @@
 ﻿using CommandsAndQueries.Exceptions;
 using MediatR;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 using Entities;
 
 namespace CommandsAndQueries.UserCommands.RemoveUser

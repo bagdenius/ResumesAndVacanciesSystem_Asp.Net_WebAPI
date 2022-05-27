@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using CommandsAndQueries.Exceptions;
-using ViewModels;
-using UnitOfWOrk.Abstract;
+using UnitOfWork.Abstract;
 using Entities;
+using ViewModels;
 
 namespace CommandsAndQueries.UserQueries.GetUser
 {
