@@ -18,7 +18,7 @@ namespace UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=JobPortal"));
+                options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Test2"));
 
             return services;
         }
